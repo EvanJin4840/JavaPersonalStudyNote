@@ -38,3 +38,4 @@ Integer.parseInt(String s, int radix)
 | `Integer.toBinaryString(x)`     | 2진수 문자열로 변환 | `"11111111"`          |
 | `Integer.toOctalString(x)`      | 8진수 문자열로 변환 | `"377"`               |
 | `Integer.toHexString(x)`        | 16진수 문자열로 변환| `"ff"`                |
+
