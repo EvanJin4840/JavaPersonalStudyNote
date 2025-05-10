@@ -30,3 +30,47 @@
 
 ### 문자열 초기화할 때 적합한 방법
 - 대부분의 경우엔 null보단, ""로 초기화하는 것이 적합함. (null에 +"문자열"하였을 때, String 값은 null문자열 이런식으로 나오기 때문)
+
+### 클래스의 멤버 변수와 메서드 매개변수의 관계 정리
+1. 멤버 변수와 지역 변수의 이름이 다를 경우
+✔ this 없이도 접근 가능
+✔ 메서드 내부에서 멤버 변수를 수정할 때 그대로 할당 가능
+- 예시 코드
+```java
+public class Example {
+    private int level; // 멤버 변수
+
+    public void setLevel(int newLevel) { // 지역 변수 (이름이 다름)
+        level = newLevel; // `this` 없이 할당 가능
+    }
+}```
+2. 멤버 변수와 지역 변수의 이름이 같을 경우
+✔ 지역 변수가 우선 참조됨 → 멤버 변수에 값이 반영되지 않음
+✔ 멤버 변수를 수정하려면 this.level = level;을 사용해야 함
+```java
+public class Example {
+    private int level; // 멤버 변수
+
+    public void setLevel(int level) { // 지역 변수 (같은 이름)
+        this.level = level; // `this`를 사용해 멤버 변수에 할당
+    }
+}```
+3. 멤버 변수를 메서드의 매개변수로 직접 전달하려는 경우
+✔ 만약 이름이 같다면 this.level을 사용해야 정확한 변수 전달 가능
+```java
+public class Example {
+    private int level = 10;
+
+    public void updateLevel(int level) {
+        processLevel(this.level); // `this.level`로 멤버 변수 전달
+    }
+
+    private void processLevel(int level) {
+        System.out.println("처리된 level 값: " + level);
+    }
+}```
+
+💡 최종 정리
+- ✅ 이름이 다르면 this 없이도 멤버 변수 접근 가능
+- ✅ 이름이 같으면 this.level을 사용해야 멤버 변수를 정확히 참조 가능
+- ✅ 멤버 변수를 메서드의 매개변수로 직접 전달하려면 this.level을 명시적으로 사용해야 안전함
