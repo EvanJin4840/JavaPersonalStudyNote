@@ -17,3 +17,22 @@
 
 
 출처: https://kadosholy.tistory.com/120 [KADOSHoly:티스토리]
+
+# unordered_map
+
+- 내부적으로 해시 테이블 기반
+- 정렬되지 않음, key 순서 보장 ❌
+- find, insert, erase 등의 평균 시간 복잡도: O(1) (최악의 경우 O(n))
+
+| 특징    | `map`               | `unordered_map`   |
+| ----- | ------------------- | ----------------- |
+| 내부 구조 | Red-Black Tree (트리) | 해시 테이블            |
+| 순서    | 정렬 O                | 정렬 X              |
+| 접근 속도 | O(log n)            | 평균 O(1) (최악 O(n)) |
+| 메모리   | 적음                  | 더 큼               |
+
+✅ 어떤 걸 쓰면 좋을까?
+
+- key 순서가 필요하다 → map
+- 순서 필요 없고 빠른 속도 → unordered_map
+- 메모리가 아쉬운 경우 → map (보통 메모리 조금 더 효율적)
