@@ -8,3 +8,4 @@ Sorted set과 ordered set이 같은 것이 아님
 
 HashSet — hash-table based, fastest typical ops, no order guarantee
 LinkedHashSet — preserves insertion order.
+TreeSet — sorted according to natural order or a Comparator; O(log n).
